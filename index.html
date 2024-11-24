@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odabir igrača</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="container">
+        <button id="infoButton" style="top: 10px; left: 10px; background-color: orange; color: white; border: none; border-radius: 50%; width: 30px; height: 30px;">i</button>
+        <h1>PRIJAVA DELEGACIJE</h1>
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>1. Odaberite ligu</p>
+                <p>2. Odaberite utakmicu</p>
+                <p>3. Odaberite DOMAĆIN/GOST</p>
+                <p>4. Dvostrukim klikom na igrača dodajete ga na posljednje mjesto popisa delegacije</p>
+                <p>5. Dvostrukim klikom na igrača brišete ga s popisa igrača</p>
+                <p>6. Desnim klikom na igrača možete igraču dodati ulogu VODITELJA ili KAPETANA</p>
+                <p>7. Ispis popunjenog obrasca možete napraviti pomoću gumba "PRIJAVA DELEGACIJE"</p>
+                <p> <br></p>
+                <p><em>*NAPOMENA: Podaci koje odaberete tijekom korištenja ove aplikacije neće biti pohranjeni u nikakvim bazama podataka. To znači da su svi vaši unosi privremeni i neće biti trajno sačuvani na bilo kojem serveru.</em></p>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Odaberi ligu:</label>
+            <div id="leagueButtons" class="league-buttons">
+                <!-- Gumbi za lige će biti ovdje -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchSelect">Odaberi utakmicu:</label>
+            <select id="matchSelect">
+                <option value="" disabled selected>Odaberite utakmicu</option>
+            </select>
+        </div>
+        <div class="toggle-container">
+            <div id="domaciButton" class="toggle-button selected">DOMAĆIN</div>
+            <div id="gostujuciButton" class="toggle-button">GOST</div>
+        </div>
+        <div class="team-containers">   
+            <div class="team-container">
+                <h3>Popis igrača</h3>
+                <div id="playerList" class="player-list droppable"></div>
+            </div>
+            <div class="team-container">
+                <h3>PRIJAVA SASTAVA EKIPE</h3>
+                <div id="selectedPlayerList" class="player-list droppable"></div>
+            </div>
+            <div class="team-container">
+                <h3>VODSTVO EKIPE</h3>
+                <div id="delegationList" class="player-list droppable"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="printButton">PRIJAVA DELEGACIJE</button>
+        </div>
+        <div id="contextMenu" class="context-menu">
+            <ul>
+                <li class="context-menu-item" data-role="Voditelj">Voditelj</li>
+                <li class="context-menu-item" data-role="Kapetan">Kapetan</li>
+            </ul>
+        </div>
+        
+    </div>
+    <script src="utakmice.js"></script>
+    <script src="main.js"></script>
+    <script src="print.js"></script> <!-- Dodano za ispis -->
+</body>
+</html>

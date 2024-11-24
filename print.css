@@ -1,0 +1,46 @@
+/* print.css */
+
+/* Resetiranje margina i paddinga */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Stilovi za ispis mreže */
+@media print {
+  body {
+      margin: 0;
+      padding: 0;
+  }
+
+  .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 stupaca */
+      grid-template-rows: repeat(25, 1fr); /* 25 redaka */
+      gap: 1px; /* razmak između ćelija */
+      width: 100%;
+      height: 100%;
+  }
+
+  .grid-item {
+      border: 1px solid black; /* Granice za ispis */
+      padding: 10px;
+      text-align: center;
+  }
+
+  /* Dodatna stilizacija za prvu ćeliju u svakom redu */
+  .grid-item:nth-child(5n + 1) {
+      border-left: none;
+  }
+
+  /* Dodatna stilizacija za posljednji redak */
+  .grid-item:nth-last-child(-n + 5) {
+      border-bottom: none;
+  }
+}
+
+#container1 {
+  overflow-y: auto; /* Omogućava vertikalni scroll */
+  max-height: 800px; /* Definira maksimalnu visinu kontejnera prije nego što se pojavi scroll */
+}

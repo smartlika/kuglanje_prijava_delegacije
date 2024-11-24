@@ -1,0 +1,305 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.league-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.league-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.league-button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.league-button:hover {
+    background-color: #e0e0e0;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.toggle-button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.toggle-button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.team-containers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.team-container {
+    width: 45%;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-list {
+    list-style-type: none;
+    padding: 0;
+    min-height: 150px;
+}
+
+.player {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.player:hover {
+    background-color: #e0e0e0;
+}
+
+.player.hide {
+    display: none;
+}
+
+
+
+.player-number {
+    font-weight: bold;
+    margin-right: 10px;
+    flex-shrink: 0; /* Osiguravanje da se redni brojevi ne smanje */
+}
+
+/* Skrivanje redoslijeda pri ispisu */
+@media print {
+    .player-number {
+        display: none;
+    }
+}
+
+/* Stilovi za informacijski modal */
+.modal {
+    display: none; /* Skriveno prema zadanim postavkama */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Crna s prozirnošću */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Širina modala */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#printButton {
+    background-color: #4CAF50; /* Zelena boja */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* Zaobljeni rubovi */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Glatki prijelazi */
+}
+
+#printButton:hover {
+    background-color: #45a049; /* Tamnija zelena boja prilikom hovera */
+    transform: scale(1.05); /* Blago povećanje prilikom hovera */
+}
+
+
+/* Popis igrača - dva stupca 50% - 50% */
+.player-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dva stupca iste širine */
+    gap: 10px; /* Razmak između elemenata */
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Odabrani igrači - dva stupca 20% - 80% */
+#selectedPlayerList {
+    display: grid;
+    grid-template-columns: 20% 80%; /* Prvi stupac 20%, drugi stupac 80% */
+    gap: 10px; /* Razmak između elemenata */
+}
+
+
+/* Gumb za ispis */
+#printButton {
+    background-color: #4CAF50; /* Zelena boja */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* Zaobljeni rubovi */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Glatki prijelazi */
+}
+
+#printButton:hover {
+    background-color: #45a049; /* Tamnija zelena boja prilikom hovera */
+    transform: scale(1.05); /* Blago povećanje prilikom hovera */
+}
+
+.search-results {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: absolute;
+    max-height: 150px;
+    overflow-y: auto;
+    width: calc(100% - 20px); /* Smanjena širina kako bi odgovarala input boxu */
+    z-index: 1000;
+}
+
+.search-results li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-results li:hover,
+.search-results li.active {
+    background-color: #f1f1f1; /* Aktivni ili hoverirani element */
+}
+
+.delegation-position {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    min-height: 40px;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.context-menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.context-menu-item:hover {
+    background-color: #f1f1f1;
+}
